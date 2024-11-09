@@ -1,0 +1,220 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #000;
+    color: #f5f5f5;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+}
+
+.animated-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #000000, #1a1a1a);
+    z-index: 1;
+}
+
+/* Animated grid effect */
+.animated-background::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background-image: 
+        linear-gradient(rgba(255, 127, 80, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 127, 80, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+}
+
+/* Floating orbs effect */
+.animated-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 127, 80, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 127, 80, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(255, 127, 80, 0.05) 0%, transparent 50%);
+    animation: orbFloat 15s ease-in-out infinite alternate;
+}
+
+/* Ambient particles container */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Individual particle styles */
+.particle {
+    position: absolute;
+    background: rgba(255, 127, 80, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeIn 1s ease-out;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: slideDown 0.8s ease-out;
+}
+
+.hero-title span {
+    color: #ff7f50;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+    margin: 1rem 0;
+    min-height: 3rem;
+    animation: slideUp 0.8s ease-out;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 20px auto;
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+.dock-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    filter: drop-shadow(0 0 10px rgba(255,127,80,0.2));
+    animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+.social-icon-wrapper {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.github-icon:hover,
+.linkedin-icon:hover,
+.email-icon:hover {
+    color: #ff7f50;
+    transform: scale(1.1);
+}
+
+/* Enhanced Animation Keyframes */
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50px, -50px) rotate(3deg);
+    }
+}
+
+@keyframes orbFloat {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 20px;
+    }
+    .dock-wrapper {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 480px) {
+    .dock-wrapper {
+        transform: scale(0.8);
+    }
+}

@@ -1,0 +1,196 @@
+.projects-section {
+  min-height: 100vh;
+  background-color: black;
+  color: white;
+  padding: 5rem 1rem;
+  position: relative;
+}
+
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.projects-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #ff7f50;
+  border-radius: 2px;
+}
+
+.projects-title .highlight {
+  color: #ff7f50;
+}
+
+.projects-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Set to 2 columns */
+  gap: 2rem; /* Adjusted gap */
+  align-items: stretch; /* Ensure cards stretch to the same height */
+  padding: 2rem;
+}
+
+.project-card {
+  background: rgba(255, 127, 80, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 127, 80, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+  display: flex; /* Use flexbox for consistent sizing */
+  flex-direction: column; /* Stack children vertically */
+  height: 100%; /* Ensure cards take full height */
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 127, 80, 0.1);
+}
+
+.project-description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 1rem; /* Adjusted margin */
+  color: #e0e0e0;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1; /* Allow description to take available space */
+}
+
+.tech-stack {
+  margin-top: 1rem; /* Space above tech stack */
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+}
+
+.tech-item {
+  background: rgba(255, 127, 80, 0.2);
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #ff7f50;
+}
+
+.project-description:last-child {
+  margin-bottom: 0;
+}
+
+.project-description .highlight {
+  color: #ff7f50;
+  font-weight: 600;
+}
+
+.project-image-container {
+  position: relative;
+  height: 250px; /* Set a fixed height for the image container */
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Ensure the wrapper takes full height */
+  display: flex; /* Use flexbox to center the image */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.project-image {
+  width: auto; /* Allow width to adjust */
+  height: 100%; /* Set height to fill the container */
+  border-radius: 1rem;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  filter: grayscale(20%);
+}
+
+.project-image-wrapper:hover .project-image {
+  filter: grayscale(0%);
+  transform: scale(1.05); /* Slightly scale up on hover */
+}
+
+.image-border {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: -1.5rem;
+  bottom: -1.5rem;
+  border: 2px solid #ff7f50;
+  border-radius: 1rem;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.project-image-wrapper:hover .image-border {
+  transform: translate(-5px, 5px);
+}
+
+/* Animated background effect */
+.projects-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 127, 80, 0.05) 0%,
+      transparent 50%
+  );
+  animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+      opacity: 0.5;
+  }
+  50% {
+      opacity: 1;
+  }
+}
+
+@media (max-width: 968px) {
+  .projects-content {
+      grid-template-columns: 1fr; /* Stack cards on smaller screens */
+      gap: 3rem;
+  }
+
+  .project-image-wrapper {
+      max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-title {
+      font-size: 2rem;
+  }
+
+  .project-description {
+      font-size: 1rem;
+  }
+
+  .project-card {
+      padding: 1.5rem;
+  }
+}

@@ -1,0 +1,33 @@
+/* Footer.css */
+.footer {
+    background-color: black;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    position: relative;
+    color: white;
+    border-top: 1px solid rgba(255, 127, 80, 0.1);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+.copyright .highlight {
+    color: #ff7f50;
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 1rem;
+    }
+    
+    .copyright {
+        font-size: 0.8rem;
+    }
+}
