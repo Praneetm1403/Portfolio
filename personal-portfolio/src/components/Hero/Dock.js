@@ -8,9 +8,9 @@ export const Dock = ({ children }) => {
     );
 };
 
-export const DockIcon = ({ children }) => {
+export const DockIcon = ({ children, onClick }) => {
     return (
-        <div className="dock-icon">
+        <div className="dock-icon" onClick={onClick}>
             {children}
         </div>
     );
